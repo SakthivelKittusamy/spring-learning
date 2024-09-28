@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="developer" class="com.practice.springpractice.Developer" autowire="byName">
+<!--		<constructor-arg value="3"></constructor-arg>-->
+		<constructor-arg ref="tester"></constructor-arg>
+		<property name="tester" ref="tester"></property>
+<!--		<property name="projectId" value="6"></property> for setter injection-->
+	</bean>
+	
+<!--	If you use autowire="byType" then need to give primary attribute, if you use autowire="byName" then give to id-->
+	<bean id="tester" class="com.practice.springpractice.Tester" primary="true">
+	</bean>
+</beans>
